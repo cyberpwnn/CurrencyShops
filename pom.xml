@@ -100,15 +100,15 @@
 			<url>http://nexus.hc.to/content/repositories/pub_releases</url>
 		</repository>
 		<repository>
-			<id>releases</id>
-			<url>http://nexus.cyberpwn.org/content/groups/public/</url>
+			<id>phantom</id>
+			<url>https://raw.githubusercontent.com/PhantomAPI/Phantom/master/repository/</url>
 		</repository>
 	</repositories>
 	<dependencies>
 		<dependency>
 			<groupId>org.cyberpwn</groupId>
 			<artifactId>phantom</artifactId>
-			<version>P</version>
+			<version>P5</version>
 		</dependency>
 		<dependency>
 			<groupId>net.milkbowl.vault</groupId>
