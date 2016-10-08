@@ -1,2 +1,0 @@
-# CurrencyShops
-Currency Shops

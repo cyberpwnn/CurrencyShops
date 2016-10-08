@@ -1,0 +1,7 @@
+name: CurrencyShops
+main: org.cyberpwn.currencyshops.CurrencyShops
+version: ${project.version}
+depend: [Phantom, Vault]
+commands: 
+  compatcusp:
+    aliases: [ccusp]
