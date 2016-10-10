@@ -198,6 +198,7 @@ public class GShop implements Shop, Configurable, AsyncConfigurable
 		}
 		
 		double payment = 0;
+		GMap<Material, Integer> amtx = new GMap<Material, Integer>();
 		
 		for(ItemStack i : p.getInventory().getContents())
 		{
@@ -218,8 +219,14 @@ public class GShop implements Shop, Configurable, AsyncConfigurable
 					payment += pxp;
 					
 					p.getInventory().remove(i.clone());
-					p.sendMessage(F.color("&8&l(&6&l!&8&l) &6Sold " + i.getAmount() + "x " + i.getType().toString().toLowerCase().replaceAll("_", " ")) + " for $" + F.f(pxp));
 					p.updateInventory();
+					
+					if(!amtx.containsKey(i.getType()))
+					{
+						amtx.put(i.getType(), 0);
+					}
+					
+					amtx.put(i.getType(), amtx.get(i.getType()) + i.getAmount());
 				}
 			}
 		}
@@ -229,6 +236,11 @@ public class GShop implements Shop, Configurable, AsyncConfigurable
 			try
 			{
 				new Transaction(getCurrency(), payment).to(p).commit();
+				
+				for(Material i : amtx.k())
+				{
+					p.sendMessage(F.color("&8&l(&6&l!&8&l) &6Sold " + amtx.get(i) + "x " + i.toString().toLowerCase().replaceAll("_", " ")) + " for $" + F.f((int)(amtx.get(i) * getSell(new MaterialBlock(i)))));
+				}
 			}
 			
 			catch(TransactionExeption e)
@@ -681,7 +693,7 @@ public class GShop implements Shop, Configurable, AsyncConfigurable
 		
 		root.open();
 	}
-
+	
 	@Override
 	public boolean isLoaded()
 	{
