@@ -81,7 +81,7 @@ public class GShop implements Shop, Configurable, AsyncConfigurable
 		sizes.put(5, 24);
 		sizes.put(6, 32);
 		sizes.put(7, 64);
-		this.loaded = false;
+		loaded = false;
 	}
 	
 	@Override
@@ -126,6 +126,7 @@ public class GShop implements Shop, Configurable, AsyncConfigurable
 		return name;
 	}
 	
+	@Override
 	public GList<String> getAliases()
 	{
 		return aliases;
@@ -239,7 +240,7 @@ public class GShop implements Shop, Configurable, AsyncConfigurable
 				
 				for(Material i : amtx.k())
 				{
-					p.sendMessage(F.color("&8&l(&6&l!&8&l) &6Sold " + amtx.get(i) + "x " + i.toString().toLowerCase().replaceAll("_", " ")) + " for $" + F.f((int)(amtx.get(i) * getSell(new MaterialBlock(i)))));
+					p.sendMessage(F.color("&8&l(&6&l!&8&l) &6Sold " + amtx.get(i) + "x " + i.toString().toLowerCase().replaceAll("_", " ")) + " for $" + F.f((int) (amtx.get(i) * getSell(new MaterialBlock(i)))));
 				}
 			}
 			
@@ -501,6 +502,7 @@ public class GShop implements Shop, Configurable, AsyncConfigurable
 															{
 																new TaskLater()
 																{
+																	@Override
 																	public void run()
 																	{
 																		for(String i : ccie.getStringList("commands"))
@@ -559,6 +561,7 @@ public class GShop implements Shop, Configurable, AsyncConfigurable
 																
 																new TaskLater()
 																{
+																	@Override
 																	public void run()
 																	{
 																		MaterialBlock mb = W.getMaterialBlock(ccie.getString("material"));
@@ -624,6 +627,7 @@ public class GShop implements Shop, Configurable, AsyncConfigurable
 										
 										new TaskLater()
 										{
+											@Override
 											public void run()
 											{
 												for(String i : ccie.getStringList("commands"))
