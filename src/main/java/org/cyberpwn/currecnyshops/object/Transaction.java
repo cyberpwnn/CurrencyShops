@@ -37,8 +37,8 @@ public class Transaction
 		
 		this.c = c;
 		this.a = a;
-		this.from = null;
-		this.to = null;
+		from = null;
+		to = null;
 	}
 	
 	public Transaction from(Player p)
@@ -104,7 +104,7 @@ public class Transaction
 				String dd = C.DARK_GRAY.toString();
 				String u = C.BOLD + C.GREEN.toString();
 				String d = C.BOLD + C.RED.toString();
-				gmbxp().message(p, dd + (a2 > 0 ? u + "+ " + u + C.stripColor(F.f((int) a2)) : d + "- " + d + "$" + C.stripColor(F.f((int) -a2))) + dd + "xp (" + cc + C.stripColor(F.f((int)SetExpFix.getTotalExperience(p))) + dd + "xp)");
+				gmbxp().message(p, dd + (a2 > 0 ? u + "+ " + u + C.stripColor(F.f((long) a2)) : d + "- " + d + "$" + C.stripColor(F.f((long) -a2))) + dd + "xp (" + cc + C.stripColor(F.f((long) SetExpFix.getTotalExperience(p))) + dd + "xp)");
 				return;
 			}
 			
@@ -112,7 +112,7 @@ public class Transaction
 			String dd = C.DARK_GRAY.toString();
 			String u = C.BOLD + C.GREEN.toString();
 			String d = C.BOLD + C.RED.toString();
-			gmbx().message(p, dd + (a2 > 0 ? u + "+ " + u + "$" + C.stripColor(F.f((int) a2)) : d + "- " + d + "$" + C.stripColor(F.f((int) -a2))) + dd + " (" + cc + "$" + C.stripColor(F.f((int)get(p))) + dd + ")");
+			gmbx().message(p, dd + (a2 > 0 ? u + "+ " + u + "$" + C.stripColor(F.f((long) a2)) : d + "- " + d + "$" + C.stripColor(F.f((long) -a2))) + dd + " (" + cc + "$" + C.stripColor(F.f((long) get(p))) + dd + ")");
 			return;
 		}
 		
@@ -120,7 +120,7 @@ public class Transaction
 		String dd = C.DARK_GRAY.toString();
 		String u = C.BOLD + C.GREEN.toString();
 		String d = C.BOLD + C.RED.toString();
-		gmb().message(p, dd + (a2 > 0 ? u + "+ " + u + F.f((int) a2) : d + "- " + d + F.f((int) -a2)) + dd + " (" + cc + F.f((int)get(p)) + dd + ")");
+		gmb().message(p, dd + (a2 > 0 ? u + "+ " + u + F.f((long) a2) : d + "- " + d + F.f((long) -a2)) + dd + " (" + cc + F.f((long) get(p)) + dd + ")");
 	}
 	
 	private void give(Player p, double a2)
