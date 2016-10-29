@@ -1,6 +1,7 @@
 package org.cyberpwn.currencyshops;
 
 import java.io.File;
+import org.cyberpwn.currecnyshops.object.DupeScan;
 import org.cyberpwn.currecnyshops.object.GShop;
 import org.phantomapi.Phantom;
 import org.phantomapi.clust.ClustAsyncAlreadyLoadingException;
@@ -26,6 +27,7 @@ public class ShopCommandController extends CommandController
 		aliases = new GList<String>();
 	}
 	
+	@Override
 	public void onStart()
 	{
 		for(File i : CurrencyShops.instance().getShopController().getShopFile().listFiles())
@@ -155,6 +157,13 @@ public class ShopCommandController extends CommandController
 				if(command.getArgs()[0].equalsIgnoreCase("hand") && sender.hasPermission("cusp.hand"))
 				{
 					c.trySell(sender.getPlayer());
+					
+					return true;
+				}
+				
+				if(command.getArgs()[0].equalsIgnoreCase("dupe") && sender.hasPermission("cusp.god"))
+				{
+					new DupeScan(c).direct();
 					
 					return true;
 				}
