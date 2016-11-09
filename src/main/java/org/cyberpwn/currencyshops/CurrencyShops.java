@@ -13,8 +13,9 @@ import org.phantomapi.world.W;
 public class CurrencyShops extends PhantomPlugin
 {
 	private CurrencyShopsController currencyShopsController;
-	private static CurrencyShops instance;
+	public static CurrencyShops instance;
 	
+	@Override
 	public void enable()
 	{
 		instance = this;
@@ -24,6 +25,7 @@ public class CurrencyShops extends PhantomPlugin
 		register(currencyShopsController);
 	}
 	
+	@Override
 	public void disable()
 	{
 		for(Player i : Phantom.instance().onlinePlayers())
@@ -49,7 +51,7 @@ public class CurrencyShops extends PhantomPlugin
 	{
 		return instance.currencyShopsController;
 	}
-
+	
 	@Override
 	public ControllerMessage onControllerMessageRecieved(ControllerMessage message)
 	{
