@@ -1,15 +1,14 @@
 package org.cyberpwn.currencyshops;
 
-import java.io.File;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.cyberpwn.currecnyshops.object.PlayerData;
-import org.phantomapi.clust.PlayerDataHandler;
+import org.phantomapi.clust.DataController;
 import org.phantomapi.construct.Controllable;
 
-public class PlayerDataController extends PlayerDataHandler<PlayerData>
+public class PlayerDataController extends DataController<PlayerData, Player>
 {
 	public PlayerDataController(Controllable parentController)
 	{
@@ -29,26 +28,7 @@ public class PlayerDataController extends PlayerDataHandler<PlayerData>
 	public PlayerData onLoad(Player identifier)
 	{
 		PlayerData pd = new PlayerData(identifier);
-		
-		File f = new File(CurrencyShops.instance.getDataFolder(), "playerdata");
-		File q = new File(f, identifier + ".yml");
-		
-		if(!q.exists())
-		{
-			loadMysql(pd, new Runnable()
-			{
-				@Override
-				public void run()
-				{
-					saveCluster(pd, "playerdata");
-				}
-			});
-		}
-		
-		else
-		{
-			loadCluster(pd, "playerdata");
-		}
+		loadCluster(pd, "playerdata");
 		
 		return pd;
 	}

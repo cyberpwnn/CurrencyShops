@@ -29,6 +29,7 @@ public class CurrencyCommandController extends CommandController
 		aliases = new GList<String>();
 	}
 	
+	@Override
 	public void onStart()
 	{
 		for(File i : CurrencyShops.instance().getCurrencyController().getCurrencyFile().listFiles())

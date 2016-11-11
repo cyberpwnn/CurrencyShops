@@ -57,11 +57,13 @@ public class CurrencyController extends DataController<GCurrency, String> implem
 		return econ != null;
 	}
 	
+	@Override
 	public void onStart()
 	{
 		setupEconomy();
 	}
 	
+	@Override
 	public void onStop()
 	{
 		
@@ -96,22 +98,23 @@ public class CurrencyController extends DataController<GCurrency, String> implem
 	{
 		return currency;
 	}
-
+	
 	public File getCurrency()
 	{
 		return currency;
 	}
-
+	
 	public Economy getEcon()
 	{
 		return econ;
 	}
 	
+	@Override
 	public GCurrency get(String t)
 	{
 		try
 		{
-
+			
 			if(t.equalsIgnoreCase("vault"))
 			{
 				return new GCurrency("vault");
@@ -141,7 +144,7 @@ public class CurrencyController extends DataController<GCurrency, String> implem
 			e.setCancelled(true);
 		}
 	}
-
+	
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String name, String[] args)
 	{

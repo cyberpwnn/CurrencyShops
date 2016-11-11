@@ -1,10 +1,12 @@
 package org.cyberpwn.currecnyshops.object;
 
 import org.bukkit.entity.Player;
+import org.phantomapi.clust.ColdLoad;
 import org.phantomapi.clust.Configurable;
 import org.phantomapi.clust.DataCluster;
 import org.phantomapi.clust.Tabled;
 
+@ColdLoad
 @Tabled("player_currency_data")
 public class PlayerData implements Configurable
 {
@@ -15,7 +17,7 @@ public class PlayerData implements Configurable
 	public PlayerData(Player player)
 	{
 		this.player = player;
-		this.cc = new DataCluster();
+		cc = new DataCluster();
 	}
 	
 	@Override
@@ -23,19 +25,19 @@ public class PlayerData implements Configurable
 	{
 		// Dynamic
 	}
-
+	
 	@Override
 	public void onReadConfig()
 	{
 		// Dynamic
 	}
-
+	
 	@Override
 	public DataCluster getConfiguration()
 	{
 		return cc;
 	}
-
+	
 	@Override
 	public String getCodeName()
 	{
