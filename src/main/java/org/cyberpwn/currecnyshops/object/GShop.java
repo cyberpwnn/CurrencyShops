@@ -240,7 +240,15 @@ public class GShop implements Shop, Configurable, AsyncConfigurable
 				
 				for(Material i : amtx.k())
 				{
-					p.sendMessage(F.color("&8&l(&6&l!&8&l) &6Sold " + amtx.get(i) + "x " + i.toString().toLowerCase().replaceAll("_", " ")) + " for $" + F.f((int) (amtx.get(i) * getSell(new MaterialBlock(i)))));
+					try
+					{
+						p.sendMessage(F.color("&8&l(&6&l!&8&l) &6Sold " + amtx.get(i) + "x " + i.toString().toLowerCase().replaceAll("_", " ")) + " for $" + F.f((int) (amtx.get(i) * getSell(new MaterialBlock(i)))));
+					}
+					
+					catch(Exception ee)
+					{
+						
+					}
 				}
 			}
 			
