@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.cyberpwn</groupId>
 	<artifactId>currencyshops</artifactId>
-	<version>4.3</version>
+	<version>4.4</version>
 	<name>Currency Shops</name>
 	<description>Currency Shops</description>
 	<properties>
@@ -116,7 +116,7 @@
 		<dependency>
 			<groupId>org.cyberpwn</groupId>
 			<artifactId>phantom</artifactId>
-			<version>P5</version>
+			<version>K9</version>
 		</dependency>
 		<dependency>
 			<groupId>net.milkbowl.vault</groupId>

@@ -114,7 +114,6 @@ public class CurrencyController extends DataController<GCurrency, String> implem
 	{
 		try
 		{
-			
 			if(t.equalsIgnoreCase("vault"))
 			{
 				return new GCurrency("vault");
