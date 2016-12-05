@@ -43,10 +43,6 @@ public class GCurrency implements Currency, Configurable
 	@Keyed("currency.allow-pay")
 	public Boolean pay = false;
 	
-	@Comment("If set to local (true), the currency will be stored via flatfile.\nIf set to false, it will be global (mysql)")
-	@Keyed("currency.local")
-	public Boolean local = true;
-	
 	public GCurrency(String name)
 	{
 		cc = new DataCluster();

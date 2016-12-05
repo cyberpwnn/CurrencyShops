@@ -3,7 +3,6 @@ package org.cyberpwn.currencyshops;
 import java.io.File;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
-import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.cyberpwn.currecnyshops.object.PlayerData;
 import org.phantomapi.clust.DataController;
@@ -64,12 +63,6 @@ public class PlayerDataController extends DataController<PlayerData, Player>
 	public void on(PlayerQuitEvent e)
 	{
 		save(e.getPlayer());
-	}
-	
-	@EventHandler
-	public void on(PlayerJoinEvent e)
-	{
-		load(e.getPlayer());
 	}
 	
 	@Override
