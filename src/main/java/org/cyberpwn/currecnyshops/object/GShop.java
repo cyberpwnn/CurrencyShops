@@ -6,6 +6,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
+import org.bukkit.event.server.ServerCommandEvent;
 import org.bukkit.inventory.ItemStack;
 import org.cyberpwn.currencyshops.CurrencyShops;
 import org.phantomapi.clust.AsyncConfig;
@@ -515,6 +516,7 @@ public class GShop implements Shop, Configurable, AsyncConfigurable
 																	{
 																		for(String i : ccie.getStringList("commands"))
 																		{
+																			CurrencyShops.instance.callEvent(new ServerCommandEvent(Bukkit.getConsoleSender(), i.replaceFirst("/", "").replaceAll("%amount%", "" + sizes.get(k)).replaceAll("%player%", p.getName())));
 																			Bukkit.dispatchCommand(Bukkit.getConsoleSender(), i.replaceFirst("/", "").replaceAll("%amount%", "" + sizes.get(k)).replaceAll("%player%", p.getName()));
 																		}
 																	}
@@ -640,6 +642,7 @@ public class GShop implements Shop, Configurable, AsyncConfigurable
 											{
 												for(String i : ccie.getStringList("commands"))
 												{
+													CurrencyShops.instance.callEvent(new ServerCommandEvent(Bukkit.getConsoleSender(), i.replaceFirst("/", "").replaceAll("%player%", p.getName())));
 													Bukkit.dispatchCommand(Bukkit.getConsoleSender(), i.replaceFirst("/", "").replaceAll("%player%", p.getName()));
 												}
 											}
