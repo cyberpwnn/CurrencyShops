@@ -4,6 +4,7 @@ import org.bukkit.entity.Player;
 import org.phantomapi.clust.ColdLoad;
 import org.phantomapi.clust.Configurable;
 import org.phantomapi.clust.DataCluster;
+import org.phantomapi.clust.PD;
 import org.phantomapi.clust.Tabled;
 
 @ColdLoad
@@ -46,7 +47,7 @@ public class PlayerData implements Configurable
 	
 	public void setCurrency(String currency, double amount)
 	{
-		cc.set(currency, amount);
+		PD.get(player).getConfiguration().set("currency." + currency, amount);
 	}
 	
 	public void addCurrency(String currency, double amount)
@@ -56,7 +57,7 @@ public class PlayerData implements Configurable
 	
 	public boolean hasCurrency(String currency)
 	{
-		return cc.contains(currency);
+		return PD.get(player).getConfiguration().contains("currency." + currency);
 	}
 	
 	public double getCurrency(String currency)
@@ -68,12 +69,12 @@ public class PlayerData implements Configurable
 		
 		try
 		{
-			return cc.getDouble(currency);
+			return PD.get(player).getConfiguration().getDouble("currency." + currency);
 		}
 		
 		catch(Exception e)
 		{
-			return cc.getInt(currency).doubleValue();
+			return PD.get(player).getConfiguration().getInt("currency." + currency).doubleValue();
 		}
 	}
 }

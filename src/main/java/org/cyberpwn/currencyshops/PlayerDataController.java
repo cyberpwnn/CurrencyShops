@@ -5,7 +5,9 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.cyberpwn.currecnyshops.object.PlayerData;
+import org.phantomapi.clust.ConfigurationHandler;
 import org.phantomapi.clust.DataController;
+import org.phantomapi.clust.PD;
 import org.phantomapi.construct.Controllable;
 import org.phantomapi.sync.TaskLater;
 
@@ -19,10 +21,7 @@ public class PlayerDataController extends DataController<PlayerData, Player>
 	@Override
 	public void onStop()
 	{
-		for(Player i : cache.k())
-		{
-			save(i);
-		}
+		
 	}
 	
 	@Override
@@ -47,7 +46,37 @@ public class PlayerDataController extends DataController<PlayerData, Player>
 		
 		else
 		{
-			loadMysql(pd);
+			try
+			{
+				if(ConfigurationHandler.rowExists(pd, getSQL()))
+				{
+					loadMysql(pd);
+					ConfigurationHandler.fromFields(pd);
+					PD.get(identifier).getConfiguration().add(pd.getConfiguration(), "currency.");
+					
+					new TaskLater()
+					{
+						@Override
+						public void run()
+						{
+							try
+							{
+								ConfigurationHandler.dropRow(pd, getSQL());
+							}
+							
+							catch(Exception e)
+							{
+								
+							}
+						}
+					};
+				}
+			}
+			
+			catch(Exception e)
+			{
+				
+			}
 		}
 		
 		return pd;
@@ -56,13 +85,13 @@ public class PlayerDataController extends DataController<PlayerData, Player>
 	@Override
 	public void onSave(Player identifier)
 	{
-		saveMysql(get(identifier));
+		
 	}
 	
 	@EventHandler
 	public void on(PlayerQuitEvent e)
 	{
-		save(e.getPlayer());
+		
 	}
 	
 	@Override

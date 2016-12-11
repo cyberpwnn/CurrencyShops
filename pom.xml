@@ -116,7 +116,7 @@
 		<dependency>
 			<groupId>org.cyberpwn</groupId>
 			<artifactId>phantom</artifactId>
-			<version>K9</version>
+			<version>D3</version>
 		</dependency>
 		<dependency>
 			<groupId>net.milkbowl.vault</groupId>

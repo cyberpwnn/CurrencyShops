@@ -144,7 +144,7 @@ public class CurrencyCommandController extends CommandController
 				{
 					String subMod = command.getArgs()[2];
 					
-					if(sub.equalsIgnoreCase("pay") && sender.isPlayer())
+					if(sub.equalsIgnoreCase("pay") && sender.isPlayer() && c.allowPay())
 					{
 						if(Phantom.instance().canFindPlayer(mod))
 						{
@@ -152,6 +152,11 @@ public class CurrencyCommandController extends CommandController
 							{
 								double a = Double.valueOf(subMod);
 								Player p = Phantom.instance().findPlayer(mod);
+								
+								if(a < 0)
+								{
+									return true;
+								}
 								
 								if(p.equals(sender.getPlayer()))
 								{
